@@ -205,6 +205,29 @@ with right:
         b.metric("Tools used", len(report["tools_used"]))
         c.metric("Analysis time", f'{saved["seconds"]:.1f}s')
 
+        advice = report.get("classifier_advice")
+        if advice:
+            with st.container(border=True):
+                st.subheader("Experimental classifier advice")
+                label = advice["predicted_dataset_label"]
+                st.text(f"Predicted CEAS dataset label: {label}")
+                st.metric(
+                    "CEAS label-1 model score",
+                    f'{advice["label_1_model_score"]:.1%}'
+                )
+                st.caption(
+                    "Trained on spam/legitimate dataset labels. "
+                    "This score is not a calibrated probability of phishing."
+                )
+                if report.get("signals_disagree"):
+                    st.warning(
+                        "Different signals: the rule checks and classifier "
+                        "flag different outcomes. Review the evidence independently."
+                    )
+                with st.expander("Classifier limitations"):
+                    for limitation in advice["limitations"]:
+                        st.text("• " + limitation)
+
         st.subheader("Evidence")
         if report["findings"]:
             for index, finding in enumerate(report["findings"], 1):

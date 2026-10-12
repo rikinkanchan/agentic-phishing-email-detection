@@ -1,0 +1,36 @@
+{
+  "dataset": "CEAS_08",
+  "split": "test",
+  "rows": 7943,
+  "target": "dataset label 1, not exclusively confirmed phishing",
+  "model_sha256": "ae5398644402c9eeae8b0489206694c39871801c98df53b0acc1a48cc6a16f9a",
+  "test_sha256": "68e61b26efbf35496ff7b5973d7b7a530b972d17118621d8e135119ada16e70b",
+  "matching_normalised_content_overlap": 0,
+  "classifier": {
+    "TP": 4431,
+    "FP": 23,
+    "TN": 3469,
+    "FN": 20,
+    "precision": 0.9948361023798833,
+    "recall": 0.9955066277241069,
+    "f1": 0.9951712521055587,
+    "accuracy": 0.9945864283016492
+  },
+  "rules": {
+    "TP": 3064,
+    "FP": 2268,
+    "TN": 1224,
+    "FN": 1387,
+    "precision": 0.5746436609152288,
+    "recall": 0.6883846326668165,
+    "f1": 0.6263927220688951,
+    "accuracy": 0.5398464056401864
+  },
+  "retrained": false,
+  "limitations": [
+    "Similar templates can still cross splits.",
+    "Same-corpus testing does not establish performance on new sources.",
+    "Reply-To metadata is unavailable.",
+    "Full bodies were evaluated; the interface has a 6,000-character limit."
+  ]
+}

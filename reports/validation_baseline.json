@@ -1,0 +1,35 @@
+{
+  "dataset": "CEAS_08",
+  "split": "validation",
+  "method": "existing rule-based baseline",
+  "positive_prediction": "suspicious",
+  "target": "dataset label 1; not necessarily confirmed phishing",
+  "rows": 7801,
+  "evaluated": 7801,
+  "errors": 0,
+  "confusion_matrix": {
+    "TP": 2949,
+    "FP": 2248,
+    "TN": 1230,
+    "FN": 1374
+  },
+  "precision": 0.5674427554358283,
+  "recall": 0.6821651630811936,
+  "f1": 0.6195378151260504,
+  "accuracy": 0.5357005512113832,
+  "finding_counts": {
+    "Link uses unencrypted HTTP": 24513,
+    "From address is missing or could not be parsed.": 226,
+    "Urgency or pressure language detected.": 119,
+    "Account verification or sensitive-information request detected.": 2,
+    "Link uses an IP address as its host": 10,
+    "Malformed web link": 1
+  },
+  "seconds": 2.1,
+  "limitations": [
+    "Reply-To metadata is unavailable.",
+    "Full bodies are scanned without the interface's character limit.",
+    "Inconclusive is counted as not flagged, not proven legitimate.",
+    "Metrics exclude processing errors; coverage is reported separately."
+  ]
+}

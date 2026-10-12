@@ -1,3 +1,4 @@
+from classifier_tool import classify_content
 from detector import analyse_email
 from sender_checks import analyse_sender
 
@@ -30,3 +31,5 @@ def run_tool(name, email_text):
     if name not in TOOLS:
         raise ValueError(f"Unknown tool: {name}")
     return TOOLS[name](email_text)
+
+TOOLS["classify_content"] = classify_content

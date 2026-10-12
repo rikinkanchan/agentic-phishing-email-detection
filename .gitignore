@@ -6,3 +6,8 @@ __pycache__/
 .streamlit/secrets.toml
 *_before*.py
 *.eml
+data/raw/
+data/processed/
+models/
+README_before*.md
+phishlens_report*.json

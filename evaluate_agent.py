@@ -1,3 +1,4 @@
+from classifier_tool import classify_content
 import io
 import time
 from contextlib import redirect_stdout
@@ -41,6 +42,15 @@ for name, text in samples:
             continue
 
         checks = {
+            "Classifier tool ran":
+                "classify_content" in report["tools_used"],
+            "Classifier advice matches direct tool":
+                report.get("classifier_advice") == classify_content(text),
+            "Different-signals flag is correct":
+                report.get("signals_disagree") == (
+                    (baseline["verdict"] == "suspicious")
+                    != (classify_content(text)["predicted_dataset_label"] == 1)
+                ),
             "Required tool ran":
                 "inspect_email" in report["tools_used"],
             "Verdict matches baseline":
@@ -67,3 +77,5 @@ for name, text in samples:
 
 print(f"\nAgent workflow tests passed: {passed}/{len(samples)}")
 print("This checks workflow consistency, not phishing detection accuracy.")
+
+raise SystemExit(0 if passed == len(samples) else 1)
